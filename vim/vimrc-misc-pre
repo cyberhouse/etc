@@ -1,4 +1,3 @@
-set runtimepath=~/etc/vim
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
