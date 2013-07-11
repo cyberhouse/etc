@@ -1,0 +1,41 @@
+SAVEHIST=200000
+HISTSIZE=240000
+setopt extended_history
+
+#http://blog.plenz.com/2012-01/zsh-complete-words-from-tmux-pane.html
+_tmux_pane_words() {
+  local expl
+  local -a w
+  if [[ -z "$TMUX_PANE" ]]; then
+    _message "not running inside tmux!"
+    return 1
+  fi
+  w=( ${(u)=$(tmux capture-pane \; show-buffer \; delete-buffer)} )
+  _wanted values expl 'words from current tmux pane' compadd -a w
+}
+
+zle -C tmux-pane-words-prefix   complete-word _generic
+zle -C tmux-pane-words-anywhere complete-word _generic
+bindkey '^Xt' tmux-pane-words-prefix
+bindkey '^X^X' tmux-pane-words-anywhere
+zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' completer _tmux_pane_words
+zstyle ':completion:tmux-pane-words-(prefix|anywhere):*' ignore-line current
+zstyle ':completion:tmux-pane-words-anywhere:*' matcher-list 'b:=* m:{A-Za-z}={a-zA-Z}'
+
+
+#http://blog.plenz.com/2012-01/tmux-session-names.html
+# 2011-10-19: tmux shortcut for creating/attaching named sessions
+  tm() {
+    [[ -z "$1" ]] && { echo "usage: tm <session>" >&2; return 1; }
+    tmux has -t $1 && tmux attach -t $1 || tmux new -s $1
+  }
+
+# 2011-10-19
+# stolen from completion function _tmux
+  function __tmux-sessions() {
+      local expl
+      local -a sessions
+      sessions=( ${${(f)"$(command tmux list-sessions)"}/:[ $'\t']##/:} )
+      _describe -t sessions 'sessions' sessions "$@"
+  }
+  compdef __tmux-sessions tm

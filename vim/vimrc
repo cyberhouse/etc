@@ -1,0 +1,3 @@
+source ~/etc/vim/vimrc-misc-pre
+source ~/etc/vim/vimrc-grml
+source ~/etc/vim/vimrc-misc

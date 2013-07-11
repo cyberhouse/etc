@@ -1,0 +1,82 @@
+htails() {
+        [ -z "$2" ] && num='' || num="-n $2"
+        head ${num} $1
+        echo "..."
+        tail ${num} $1
+}
+
+unisleep() {
+        while true; do date; ps auxf | awk '{if($8=="D") print $0;}'; sleep 1; done
+}
+
+function ban() {
+    if [ "$(id -u)" == "0" ] ; then
+        iptables -A INPUT -s $1 -j DROP
+    else
+        sudo iptables -A INPUT -s $1 -j DROP
+    fi
+}
+
+function debup() {
+    if [ "$(id -ur)" == "0" ] ; then
+        apt-get update && apt-get dist-upgrade && apt-get clean
+    else
+        sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get clean
+    fi
+}
+
+alias debmysql="mysql --defaults-extra-file=/etc/mysql/debian.cnf"
+
+alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\'' -e '\''s/^/   /'\'' -e '\''s/-/|/'\'''
+
+function mcd() { mkdir -p "$1" && cd "$1"; }
+
+servedir(){
+    python -m SimpleHTTPServer $1
+}
+
+sssh(){ ssh -t "$1" 'tmux attach -d || tmux new || screen -DR'; }
+loop () { while (true) do $@ ; sleep 2; done;}
+
+alias myip='curl ifconfig.me'
+alias myip2='curl icanhazip.com'
+alias myip3='curl myip.dnsomatic.com'
+alias myip4='curl whatismyip.akamai.com'
+alias myptr='curl icanhazptr.com'
+alias mytrace='curl icanhaztrace.com'
+alias sshx='ssh -X -C -c blowfish-cbc,arcfour'
+
+alias mysqlthreads='mysqladmin extended -i1 | grep Threads_running'
+
+alias gti='git'
+
+alias -s bak=vim
+alias -s conf=vim
+alias -s rc=vim
+alias -s css=vim
+alias -s csv=vim
+alias -s html=vim
+alias -s js=vim
+alias -s json=vim
+alias -s log="less -MN"
+alias -s php=vim
+alias -s sql=vim
+alias -s tex=vim
+alias -s tmpl=vim
+alias -s ts=vim
+alias -s txt=vim
+alias -s xml=vim
+alias -s xsd=vim
+alias -s yaml=vim
+
+
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g C='| wc -l'
+alias -g L="| less"
+alias -g LS='| less -S'
+alias -g NUL="> /dev/null 2>&1"
+alias -g VM=/var/log/messages
+alias -g AEL=/var/log/apache2/error.log
+alias -g AAL=/var/log/apache2/access.log

@@ -1,0 +1,5 @@
+source ~/etc/zsh/zshrc-misc-pre
+source ~/etc/zsh/zshrc-grml
+source ~/etc/zsh/zshrc-grml-local
+source ~/etc/zsh/zshrc-misc
+source ~/etc/zsh/aliases 
