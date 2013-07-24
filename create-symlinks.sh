@@ -1,3 +1,4 @@
+#!/bin/sh
 ln -s ~/etc/zsh/zshrc ~/.zshrc
 
 ln -s ~/etc/vim ~/.vim
