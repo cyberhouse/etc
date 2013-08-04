@@ -19,3 +19,9 @@
 [submodule "vim/bundle/wombat"]
 	path = vim/bundle/wombat
 	url = https://github.com/vim-scripts/Wombat
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = https://github.com/tpope/vim-markdown
+[submodule "vim/bundle/vim-markdown-folding"]
+	path = vim/bundle/vim-markdown-folding
+	url = https://github.com/nelstrom/vim-markdown-folding
