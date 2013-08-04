@@ -1,0 +1,35 @@
+htails() {
+        [ -z "$2" ] && num='' || num="-n $2"
+        head ${num} $1
+        echo "..."
+        tail ${num} $1
+}
+
+unisleep() {
+        while true; do date; ps auxf | awk '{if($8=="D") print $0;}'; sleep 1; done
+}
+
+function ban() {
+    if [ "$(id -u)" == "0" ] ; then
+        iptables -A INPUT -s $1 -j DROP
+    else
+        sudo iptables -A INPUT -s $1 -j DROP
+    fi
+}
+
+function debup() {
+    if [ "$(id -ur)" == "0" ] ; then
+        apt-get update && apt-get dist-upgrade && apt-get clean
+    else
+        sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get clean
+    fi
+}
+
+function mcd() { mkdir -p "$1" && cd "$1"; }
+
+servedir(){
+    python -m SimpleHTTPServer $1
+}
+
+sssh(){ ssh -t "$1" 'tmux attach -d || tmux new || screen -DR'; }
+loop () { while (true) do $@ ; sleep 2; done;}
