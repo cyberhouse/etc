@@ -1,3 +1,4 @@
 **/*.swp
-vim/.netrwhist
 etclog
+git/gitconfig-local
+vim/.netrwhist
