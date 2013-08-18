@@ -8,3 +8,5 @@ ln -s ~/etc/vim/gvvimrc ~/.gvimrc
 ln -s ~/etc/tmux/tmux.conf ~/.tmux.conf
 
 ln -s ~/etc/git/gitconfig ~/.gitconfig
+
+touch ~/.z
