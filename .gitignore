@@ -2,3 +2,9 @@
 etclog
 git/gitconfig-local
 vim/.netrwhist
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
