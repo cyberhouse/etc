@@ -35,3 +35,7 @@ sssh(){ ssh -t "$1" 'tmux attach -d || tmux new || screen -DR'; }
 loop () { while (true) do $@ ; sleep 2; done;}
 
 passgen(){ dd if=/dev/random bs=64 count=1 2>/dev/null | base64 | sed 's/=//g'}
+
+httpresponse() {
+	curl -sL -w "%{http_code}\\n" $1 -o /dev/null
+}
