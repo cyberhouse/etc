@@ -39,3 +39,5 @@ passgen(){ dd if=/dev/random bs=64 count=1 2>/dev/null | base64 | sed 's/=//g'}
 httpresponse() {
 	curl -sL -w "%{http_code}\\n" $1 -o /dev/null
 }
+
+fdns() { dig +short $1 | xargs -L 5 dig +short -x }

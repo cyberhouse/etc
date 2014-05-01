@@ -41,3 +41,6 @@ alias myptr='curl icanhazptr.com'
 alias mysqlthreads='mysqladmin extended -i1 | grep Threads_running'
 alias mytrace='curl icanhaztrace.com'
 alias sshx='ssh -X -C -c blowfish-cbc,arcfour'
+alias psrss='ps -wweopid,ppid,rss,pcpu,cmd --sort +rss' # GNU ps only
+alias pscpu='ps -wweopid,ppid,rss,pcpu,cmd --sort +pcpu' # GNU ps only
+alias makepw='curl -s https://makepw.com/plain/32/|tail -8'
