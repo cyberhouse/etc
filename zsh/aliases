@@ -44,3 +44,6 @@ alias sshx='ssh -X -C -c blowfish-cbc,arcfour'
 alias psrss='ps -wweopid,ppid,rss,pcpu,cmd --sort +rss' # GNU ps only
 alias pscpu='ps -wweopid,ppid,rss,pcpu,cmd --sort +pcpu' # GNU ps only
 alias makepw='curl -s https://makepw.com/plain/32/|tail -8'
+
+alias getcomposer='curl -sS https://getcomposer.org/installer | php'
+alias composer='php -dmemory_limit=-1 -f composer.phar'
