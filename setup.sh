@@ -18,3 +18,5 @@ touch ~/.z
 cd $DIR && git submodule update --init --recursive
 
 echo "Use ~/.gitconfig-local for git settings not to be tracked by git, e.g. 'name' and 'email'."
+echo "Use ~/.zshrc-local for custom zsh settings like custom aliases"
+
