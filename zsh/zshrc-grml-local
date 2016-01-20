@@ -104,6 +104,9 @@ fi
 ## add `|' to output redirections in the history
 #setopt histallowclobber
 
+## try to avoid the 'zsh: no matches found...'
+#setopt nonomatch
+
 ## warning if file exists ('cat /dev/null > ~/.zshrc')
 #setopt NO_clobber
 
@@ -276,12 +279,12 @@ fi
 #    fi
 #}
 
-# Memory overview
-memusage() {
-    ps aux | awk '{if (NR > 1) print $5;
-                   if (NR > 2) print "+"}
-                   END { print "p" }' | dc
-}
+## Memory overview
+#memusage() {
+#    ps aux | awk '{if (NR > 1) print $5;
+#                   if (NR > 2) print "+"}
+#                   END { print "p" }' | dc
+#}
 
 ## print hex value of a number
 #hex() {
